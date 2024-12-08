@@ -1,4 +1,5 @@
 import store from "@/redux/store";
+import Routers from "@/router/Routers";
 import "@/styles/globals.css";
 import { StyleProvider } from "@ant-design/cssinjs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -8,7 +9,6 @@ import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
-
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
@@ -20,7 +20,8 @@ export default function App({ Component, pageProps }: AppProps) {
           }}
         >
           <StyleProvider hashPriority="high">
-            <Component {...pageProps} />
+            {/* <Component {...pageProps} /> */}
+            <Routers Component={Component} pageProps={pageProps} />
           </StyleProvider>
         </ConfigProvider>
       </Provider>
